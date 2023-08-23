@@ -1,0 +1,29 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    - name: deploy API on Dev
+        run : echo "deploy workflow completed"
+
+  trigger_dependent_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dispatch Dependent Workflow
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const response = await github.actions.createWorkflowDispatch({
+              workflow_id: 'dependent_workflow.yml'
+            });
+            console.log(response);
