@@ -1,14 +1,17 @@
-name: Simple Echo Workflow
+name: Triggered Workflow
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types:
+      - trigger-workflow-event
 
 jobs:
-  echo_message:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Message
-        run: echo "Hello from GitHub Actions!"
+      
+        
+    
+       - name: Print Message
+         run: echo "Hello from GitHub Actions!"
