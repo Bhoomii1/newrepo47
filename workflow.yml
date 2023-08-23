@@ -24,6 +24,8 @@ jobs:
         with:
           script: |
             const response = await github.actions.createWorkflowDispatch({
+            owner: 'Bhoomii1',
+              repo: 'newrepo47',
               workflow_id: 'dependent_workflow.yml'
             });
             console.log(response);
